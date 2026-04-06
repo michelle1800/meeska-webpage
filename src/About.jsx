@@ -1,19 +1,26 @@
 import './About.css';
 import { Link } from 'react-router-dom';
-import meeskaLogo from './assets/meeska-logo.png';
+import strawberryImg from './assets/meeska-strawberry.jpeg';
+import blueberryImg from './assets/meeska-blueberry.jpeg';
+import cinnamonImg from './assets/meeska-cinnamon.jpeg';
+import originalImg from './assets/meeska-original.jpeg';
+
+const FLAVORS = [
+  { name: 'Sweet Strawberry', img: strawberryImg, colorClass: 'flavor-strawberry' },
+  { name: 'Wild Blueberry', img: blueberryImg, colorClass: 'flavor-blueberry' },
+  { name: 'Cinnamon Brown Sugar', img: cinnamonImg, colorClass: 'flavor-cinnamon' },
+  { name: 'Original', img: originalImg, colorClass: 'flavor-original' },
+];
 
 function About() {
   return (
     <div className="about-page">
-
-      {/* Top Navigation for About Page */}
       <header className="about-nav">
-        <Link to="/">
-          <img 
-            src={meeskaLogo} 
-            alt="Meeska Logo" 
-            className="about-logo"
-          />
+        <Link to="/" className="about-logo-text">
+          <div className="hero-logo-text">
+            <span className="hero-logo-name">Meeska</span>
+            <span className="hero-logo-tagline">High Protein Dairy Snack</span>
+          </div>
         </Link>
       </header>
 
@@ -21,7 +28,7 @@ function About() {
 
       <p className="about-description">
         Meeska was created with one simple goal — to make a dairy snack that is
-        wholesome, clean, and ridiculously tasty. Our farmer’s cheese blends real
+        wholesome, clean, and ridiculously tasty. Our farmer's cheese blends real
         ingredients with bold flavors to give you something that feels nostalgic,
         comforting, and genuinely good for you.
       </p>
@@ -29,27 +36,16 @@ function About() {
       <h2 className="about-subtitle">Our Flavors</h2>
 
       <div className="about-flavor-grid">
-
-        <div className="about-flavor-card">
-          <div className="about-flavor-img placeholder-img">Image Here</div>
-          <h3>Sweet Strawberry</h3>
-        </div>
-
-        <div className="about-flavor-card">
-          <div className="about-flavor-img placeholder-img">Image Here</div>
-          <h3>Wild Blueberry</h3>
-        </div>
-
-        <div className="about-flavor-card">
-          <div className="about-flavor-img placeholder-img">Image Here</div>
-          <h3>Chocolate</h3>
-        </div>
-
-        <div className="about-flavor-card">
-          <div className="about-flavor-img placeholder-img">Image Here</div>
-          <h3>Original</h3>
-        </div>
-
+        {FLAVORS.map((flavor) => (
+          <div className={`about-flavor-card ${flavor.colorClass}`} key={flavor.name}>
+            <img
+              src={flavor.img}
+              alt={`Meeska ${flavor.name}`}
+              className="about-flavor-img"
+            />
+            <h3>{flavor.name}</h3>
+          </div>
+        ))}
       </div>
     </div>
   );
