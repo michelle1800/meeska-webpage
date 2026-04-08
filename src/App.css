@@ -18,11 +18,16 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(0, 102, 204, 0.85);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(255, 214, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   animation: fadeIn 0.6s ease both;
+}
+
+a.hero-nav-left {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .hero-logo-text {
@@ -35,7 +40,7 @@
   font-family: var(--font-heading);
   font-size: 2.4rem;
   font-weight: 700;
-  color: var(--cream);
+  color: var(--blue);
   letter-spacing: 0.02em;
 }
 
@@ -57,7 +62,7 @@
 
 .hero-nav-right a {
   text-decoration: none;
-  color: var(--cream);
+  color: var(--blue);
   position: relative;
   transition: color 0.25s ease;
 }
@@ -145,6 +150,73 @@
   animation: float 10s ease-in-out infinite reverse;
 }
 
+/* Floating product images */
+.hero-floater {
+  position: absolute;
+  height: auto;
+  border-radius: 1.2rem;
+  opacity: 1;
+  pointer-events: none;
+  z-index: 0;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.35));
+}
+
+.hero-floater-1 {
+  top: 10%;
+  right: 15%;
+  width: 190px;
+  animation: drift1 18s ease-in-out infinite;
+}
+
+.hero-floater-2 {
+  bottom: 12%;
+  left: 14%;
+  width: 190px;
+  animation: drift2 22s ease-in-out infinite;
+}
+
+.hero-floater-3 {
+  top: 45%;
+  right: 12%;
+  width: 190px;
+  animation: drift3 20s ease-in-out infinite;
+}
+
+.hero-floater-4 {
+  top: 12%;
+  left: 12%;
+  width: 190px;
+  animation: drift4 24s ease-in-out infinite;
+}
+
+@keyframes drift1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(-40px, 30px) rotate(8deg); }
+  50% { transform: translate(-20px, 60px) rotate(-5deg); }
+  75% { transform: translate(30px, 20px) rotate(10deg); }
+}
+
+@keyframes drift2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(35px, -25px) rotate(-10deg); }
+  50% { transform: translate(60px, 10px) rotate(6deg); }
+  75% { transform: translate(20px, -40px) rotate(-8deg); }
+}
+
+@keyframes drift3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-30px, -35px) rotate(12deg); }
+  45% { transform: translate(15px, -50px) rotate(-6deg); }
+  70% { transform: translate(-20px, 20px) rotate(9deg); }
+}
+
+@keyframes drift4 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  30% { transform: translate(25px, 40px) rotate(-7deg); }
+  55% { transform: translate(50px, -10px) rotate(10deg); }
+  80% { transform: translate(-15px, 30px) rotate(-4deg); }
+}
+
 .hero-main::before {
   content: "";
   position: absolute;
@@ -195,6 +267,68 @@
   animation: fadeInUp 0.7s ease 0.3s both;
 }
 
+.hero-main-cta {
+  margin-top: 2.2rem;
+  border: none;
+  border-radius: 999px;
+  padding: 1rem 2.8rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  font-family: inherit;
+  background: var(--gold);
+  color: var(--blue);
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  animation: fadeInUp 0.7s ease 0.4s both;
+}
+
+.hero-main-cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255, 214, 0, 0.4);
+}
+
+.hero-main-cta:active {
+  transform: translateY(0);
+}
+
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3.5rem;
+  animation: fadeInUp 0.7s ease 0.55s both;
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.hero-stat-value {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1.1;
+}
+
+.hero-stat-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(252, 241, 212, 0.6);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.hero-stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(252, 241, 212, 0.15);
+}
+
 .hero-product {
   margin-top: 3rem;
   animation: fadeInUp 0.8s ease 0.45s both;
@@ -213,6 +347,8 @@
   position: relative;
   width: 260px;
   height: 300px;
+  border-radius: 2rem;
+  overflow: hidden;
 }
 
 .hero-product-img {
@@ -220,8 +356,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  border-radius: 1rem;
+  object-fit: cover;
+  border-radius: 2rem;
   filter: drop-shadow(0 12px 40px rgba(0, 0, 0, 0.3));
   opacity: 0;
   transform: scale(0.92);
@@ -289,7 +425,7 @@
 
 .story-content {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 4rem;
   max-width: 1100px;
   width: 100%;
@@ -329,12 +465,20 @@
   margin-bottom: 1rem;
 }
 
+.story-body-closing {
+  font-weight: 600;
+  font-style: italic;
+  color: var(--blue);
+}
+
 .story-image {
   flex-shrink: 0;
+  position: sticky;
+  top: 120px;
 }
 
 .story-img {
-  width: 320px;
+  width: 380px;
   height: auto;
   border-radius: 1.5rem;
   box-shadow: 0 16px 50px rgba(0, 0, 0, 0.12);
@@ -346,12 +490,17 @@
 }
 
 /* Flavors grid within story */
-.story-flavors {
+.story-flavors-section {
   width: 100%;
-  max-width: 1100px;
+  padding: 6rem 2rem 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--cream);
+}
+
+.story-flavors-section .story-flavor-grid {
+  max-width: 1100px;
 }
 
 .story-flavors-heading {
@@ -433,6 +582,82 @@
 
 .story-flavor-card:hover .story-flavor-img {
   transform: scale(1.03);
+}
+
+/* ========================================
+   WHAT IS FARMER CHEESE
+   ======================================== */
+
+.farmer-cheese-section {
+  background: var(--blue);
+  padding: 7rem 2rem 6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.farmer-cheese-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.farmer-cheese-image {
+  flex-shrink: 0;
+  position: sticky;
+  top: 120px;
+}
+
+.farmer-cheese-img {
+  width: 380px;
+  height: auto;
+  border-radius: 1.5rem;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+.farmer-cheese-img:hover {
+  transform: scale(1.03) rotate(1deg);
+}
+
+.farmer-cheese-text {
+  flex: 1;
+}
+
+.farmer-cheese-eyebrow {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--blue);
+  background: var(--gold);
+  padding: 0.3rem 1rem;
+  border-radius: 999px;
+  margin-bottom: 1.2rem;
+}
+
+.farmer-cheese-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+  line-height: 1.15;
+}
+
+.farmer-cheese-body {
+  font-size: 1.15rem;
+  line-height: 1.75;
+  color: rgba(252, 241, 212, 0.8);
+  margin-bottom: 1rem;
+}
+
+.farmer-cheese-closing {
+  font-weight: 600;
+  font-style: italic;
+  color: var(--gold);
 }
 
 /* ========================================
@@ -526,18 +751,125 @@
 
 .ingredients-product-wrap {
   flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.ingredients-product-img {
+.ingredients-carousel {
+  position: relative;
   width: 240px;
-  height: auto;
-  border-radius: 1rem;
+  height: 280px;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+.ingredients-carousel-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 2rem;
   filter: drop-shadow(0 10px 35px rgba(0, 0, 0, 0.3));
-  animation: float 5s ease-in-out infinite;
+  opacity: 0;
+  transform: scale(0.92);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+
+.ingredients-carousel-img.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.ingredients-flavor-name {
+  margin-top: 0.8rem;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: 0.02em;
+}
+
+.ingredients-dots {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+}
+
+.ingredients-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid rgba(252, 241, 212, 0.4);
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+
+.ingredients-dot.active {
+  background: var(--gold);
+  border-color: var(--gold);
 }
 
 .ingredients-bottom-callout {
   margin-top: 3rem;
+}
+
+.ingredients-details {
+  display: flex;
+  gap: 4rem;
+  margin-top: 5rem;
+  max-width: 900px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.ingredients-details-heading {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin: 0 0 1.2rem;
+}
+
+.ingredients-highlights {
+  flex: 1;
+}
+
+.ingredients-highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ingredients-highlights-list li {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  background: rgba(255, 214, 0, 0.08);
+  padding: 0.7rem 1.1rem;
+  border-radius: 0.75rem;
+  border-left: 3px solid var(--gold);
+}
+
+.ingredients-nutrition {
+  flex-shrink: 0;
+  width: 280px;
+}
+
+.ingredients-nutrition-img {
+  width: 100%;
+  height: auto;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 214, 0, 0.1);
 }
 
 /* ========================================
@@ -819,6 +1151,20 @@
   backdrop-filter: blur(4px);
 }
 
+.recipe-card-link {
+  text-decoration: none;
+}
+
+.recipe-card-clickable {
+  cursor: pointer;
+}
+
+.recipe-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
 .recipe-name {
   font-size: 1.1rem;
   font-weight: 600;
@@ -896,6 +1242,12 @@
 .footer-links a:hover,
 .footer-link-btn:hover {
   color: var(--gold);
+}
+
+.footer-instagram {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .footer-signup {
@@ -992,13 +1344,13 @@
 
 .signup-modal {
   position: relative;
-  background: var(--blue-navy);
-  color: var(--cream);
+  background: #fff;
+  color: var(--blue);
   padding: 2.8rem 2.8rem 2.2rem;
   border-radius: 2rem;
   width: min(430px, 90%);
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 214, 0, 0.12);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.06);
   animation: scaleIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
@@ -1010,7 +1362,7 @@
   background: transparent;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--cream);
+  color: var(--blue);
   opacity: 0.5;
   transition: opacity 0.2s ease;
 }
@@ -1024,14 +1376,15 @@
   font-size: 1.8rem;
   font-weight: 700;
   margin-bottom: 0.6rem;
-  color: var(--gold);
+  color: var(--blue);
 }
 
 .signup-text {
   font-size: 1rem;
   margin-bottom: 1.5rem;
-  opacity: 0.7;
+  opacity: 0.6;
   line-height: 1.5;
+  color: var(--blue);
 }
 
 .signup-form {
@@ -1044,17 +1397,17 @@
 .signup-input {
   padding: 0.8rem 1rem;
   border-radius: 999px;
-  border: 2px solid rgba(252, 241, 212, 0.12);
-  background: rgba(255, 255, 255, 0.06);
+  border: 2px solid rgba(0, 30, 70, 0.12);
+  background: rgba(0, 30, 70, 0.03);
   font-size: 1rem;
   font-family: inherit;
   outline: none;
-  color: var(--cream);
+  color: var(--blue);
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .signup-input::placeholder {
-  color: rgba(252, 241, 212, 0.3);
+  color: rgba(0, 30, 70, 0.35);
 }
 
 .signup-input:focus {
@@ -1084,13 +1437,32 @@
   transform: translateY(0);
 }
 
+.signup-instagram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--blue);
+  opacity: 0.5;
+  transition: opacity 0.2s ease, color 0.2s ease;
+  margin-top: 0.3rem;
+}
+
+.signup-instagram:hover {
+  opacity: 1;
+  color: var(--gold);
+}
+
 .signup-skip {
   margin-top: 0.5rem;
   border: none;
   background: none;
   font-size: 0.9rem;
   font-family: inherit;
-  color: var(--cream);
+  color: var(--blue);
   opacity: 0.4;
   cursor: pointer;
   text-decoration: none;
@@ -1099,6 +1471,96 @@
 
 .signup-skip:hover {
   opacity: 0.7;
+}
+
+/* ========================================
+   NUTRITION DISCLAIMER
+   ======================================== */
+
+.nutrition-disclaimer {
+  font-size: 0.8rem;
+  color: rgba(252, 241, 212, 0.5);
+  margin-top: 0.8rem;
+  font-style: italic;
+  text-align: center;
+}
+
+/* ========================================
+   FOOTER FAQ
+   ======================================== */
+
+.footer-faq {
+  width: 100%;
+  max-width: 1200px;
+  padding: 2.5rem 3rem 0;
+  margin-top: 2rem;
+  border-top: 1px solid rgba(252, 241, 212, 0.08);
+}
+
+.footer-faq-heading {
+  font-family: var(--font-heading);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 1.2rem;
+}
+
+.footer-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.faq-item {
+  border-bottom: 1px solid rgba(252, 241, 212, 0.08);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  border: none;
+  background: none;
+  color: rgba(252, 241, 212, 0.8);
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  gap: 1rem;
+  transition: color 0.2s ease;
+}
+
+.faq-question:hover {
+  color: var(--gold);
+}
+
+.faq-chevron {
+  font-size: 1.3rem;
+  font-weight: 300;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0 0;
+}
+
+.faq-open .faq-answer {
+  max-height: 300px;
+  padding: 0 0 1rem;
+}
+
+.faq-answer p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(252, 241, 212, 0.55);
+  margin: 0;
 }
 
 /* ========================================
@@ -1121,6 +1583,34 @@
     font-size: clamp(3.5rem, 14vw, 5rem);
   }
 
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: center;
+    margin-top: 2.5rem;
+  }
+
+  .hero-stat-value {
+    font-size: 1.3rem;
+  }
+
+  .hero-stat-divider {
+    display: none;
+  }
+
+  .hero-stat {
+    min-width: 80px;
+  }
+
+  .hero-main-cta {
+    padding: 0.85rem 2.2rem;
+    font-size: 1.1rem;
+  }
+
+  .hero-floater {
+    display: none;
+  }
+
   .hero-product-glow {
     width: 240px;
     height: 280px;
@@ -1138,12 +1628,32 @@
     text-align: center;
   }
 
+  .story-image {
+    position: static;
+  }
+
   .story-img {
     width: 240px;
   }
 
   .story-flavor-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Farmer cheese */
+  .farmer-cheese-content {
+    flex-direction: column;
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .farmer-cheese-image {
+    position: static;
+    align-self: center;
+  }
+
+  .farmer-cheese-img {
+    width: 260px;
   }
 
   /* Ingredients */
@@ -1169,8 +1679,19 @@
     align-items: center;
   }
 
-  .ingredients-product-img {
+  .ingredients-carousel {
     width: 190px;
+    height: 220px;
+  }
+
+  .ingredients-details {
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+  }
+
+  .ingredients-nutrition {
+    width: 240px;
   }
 
   /* Comparison */

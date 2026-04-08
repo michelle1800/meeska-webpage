@@ -1,0 +1,102 @@
+/* ========================================
+   FAQ PAGE
+   ======================================== */
+
+.faq-hero {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-navy) 100%);
+}
+
+.faq-hero-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 3rem 4vw;
+}
+
+/* FAQ accordion items */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+}
+
+.faq-page-item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.faq-page-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.4rem 0;
+  border: none;
+  background: none;
+  color: var(--blue);
+  font-size: 1.15rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  gap: 1.5rem;
+  transition: color 0.2s ease;
+}
+
+.faq-page-question:hover {
+  color: var(--gold);
+}
+
+.faq-page-chevron {
+  font-size: 1.5rem;
+  font-weight: 300;
+  flex-shrink: 0;
+  color: var(--gold);
+  transition: transform 0.3s ease;
+}
+
+.faq-page-open .faq-page-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-page-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease, padding 0.35s ease;
+  padding: 0;
+}
+
+.faq-page-open .faq-page-answer {
+  max-height: 400px;
+  padding: 0 0 1.4rem;
+}
+
+.faq-page-answer p {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #3a3a3a;
+  margin: 0;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+  .faq-hero {
+    height: 220px;
+  }
+
+  .faq-hero-overlay {
+    padding: 2rem 1.5rem;
+  }
+
+  .faq-page-question {
+    font-size: 1.05rem;
+  }
+}

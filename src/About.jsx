@@ -27,7 +27,7 @@ function About() {
       <h1 className="about-title">The Story of Meeska</h1>
 
       <p className="about-description">
-        Meeska was created with one simple goal — to make a dairy snack that is
+        Meeska was created with one simple goal: to make a dairy snack that is
         wholesome, clean, and ridiculously tasty. Our farmer's cheese blends real
         ingredients with bold flavors to give you something that feels nostalgic,
         comforting, and genuinely good for you.
