@@ -197,6 +197,7 @@ function App() {
           <a href="#our-story">Our Story</a>
           <a href="#reviews">Reviews</a>
           <a href="#recipes">Recipes</a>
+          <Link to="/faq">FAQ</Link>
         </nav>
       </header>
 
@@ -205,11 +206,6 @@ function App() {
         <section className="hero-main">
           <div className="hero-blob hero-blob-1" />
           <div className="hero-blob hero-blob-2" />
-
-          <img src={originalImg} alt="" className="hero-floater hero-floater-1" aria-hidden="true" />
-          <img src={strawberryImg} alt="" className="hero-floater hero-floater-2" aria-hidden="true" />
-          <img src={blueberryImg} alt="" className="hero-floater hero-floater-3" aria-hidden="true" />
-          <img src={cinnamonImg} alt="" className="hero-floater hero-floater-4" aria-hidden="true" />
 
           <div className="hero-heading">
             <span className="hero-word-meeska">Meeska</span>
@@ -225,27 +221,7 @@ function App() {
             </button>
           </div>
 
-          <div className="hero-stats">
-            <div className="hero-stat">
-              <span className="hero-stat-value">15g</span>
-              <span className="hero-stat-label">Protein</span>
-            </div>
-            <div className="hero-stat-divider" />
-            <div className="hero-stat">
-              <span className="hero-stat-value">0g</span>
-              <span className="hero-stat-label">Added Sugar</span>
-            </div>
-            <div className="hero-stat-divider" />
-            <div className="hero-stat">
-              <span className="hero-stat-value">Non-GMO</span>
-              <span className="hero-stat-label">Ingredients</span>
-            </div>
-            <div className="hero-stat-divider" />
-            <div className="hero-stat">
-              <span className="hero-stat-value">Live</span>
-              <span className="hero-stat-label">Probiotic Cultures</span>
-            </div>
-          </div>
+          <div className="hero-tagline">Cottage Cheese's Cooler Cousin</div>
 
         </section>
 
