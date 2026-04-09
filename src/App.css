@@ -18,7 +18,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(252, 241, 212, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(0, 0, 0, 0.06);
@@ -1244,6 +1244,46 @@ a.hero-nav-left {
   border-top: 1px solid rgba(252, 241, 212, 0.08);
   font-size: 0.85rem;
   color: rgba(252, 241, 212, 0.35);
+}
+
+/* ========================================
+   TOAST NOTIFICATION
+   ======================================== */
+
+.toast {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  z-index: 1100;
+  animation: toastIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both,
+             toastOut 0.4s ease 3s both;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.toast-success {
+  background: var(--blue);
+  color: var(--cream);
+}
+
+.toast-error {
+  background: #c0392b;
+  color: #fff;
+}
+
+@keyframes toastIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-1rem); }
+  to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes toastOut {
+  from { opacity: 1; transform: translateX(-50%) translateY(0); }
+  to   { opacity: 0; transform: translateX(-50%) translateY(-1rem); }
 }
 
 /* ========================================

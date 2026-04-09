@@ -129,6 +129,7 @@ function App() {
   const [email, setEmail] = useState('');
   const [footerEmail, setFooterEmail] = useState('');
   const [currentFlavor, setCurrentFlavor] = useState(0);
+  const [toast, setToast] = useState(null);
 
   useScrollReveal();
 
@@ -167,9 +168,15 @@ function App() {
     }
   };
 
+  const showToast = (success) => {
+    setToast(success ? 'success' : 'error');
+    setTimeout(() => setToast(null), 3500);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await submitEmail(email);
+    const success = await submitEmail(email);
+    showToast(success);
     sessionStorage.setItem('meeska_signup_seen', 'true');
     setShowSignupModal(false);
     setEmail('');
@@ -177,7 +184,8 @@ function App() {
 
   const handleFooterSubmit = async (e) => {
     e.preventDefault();
-    await submitEmail(footerEmail);
+    const success = await submitEmail(footerEmail);
+    showToast(success);
     setFooterEmail('');
   };
 
@@ -522,6 +530,15 @@ function App() {
           </div>
         </footer>
       </main>
+
+      {/* TOAST NOTIFICATION */}
+      {toast && (
+        <div className={`toast toast-${toast}`}>
+          {toast === 'success'
+            ? "You're in! Welcome to the Meeska family."
+            : 'Something went wrong. Please try again.'}
+        </div>
+      )}
 
       {/* EMAIL SIGNUP MODAL */}
       {showSignupModal && (
